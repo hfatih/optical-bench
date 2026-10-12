@@ -6,6 +6,7 @@
   <p>
     <strong>Dil:</strong> <a href="README.md"><strong>EN</strong></a> | <a href="README.tr.md"><strong>TR</strong></a>
     &nbsp;•&nbsp;
+    <a href="https://optical.hfatih.com"><strong>✦ Canlı Simülasyon (optical.hfatih.com)</strong></a> ·
     <a href="#genel-bakış">Genel Bakış</a> ·
     <a href="#teleskop-laboratuvarı">Teleskoplar</a> ·
     <a href="#optik-fizik-motoru">Fizik Motoru</a> ·
@@ -15,6 +16,7 @@
   </p>
 
   <p>
+    <a href="https://optical.hfatih.com"><img src="https://img.shields.io/badge/Canl%C4%B1%20Demo-optical.hfatih.com-e7a0b9?style=flat-square&logo=googlechrome&logoColor=white" alt="Canlı Demo"></a>
     <img src="https://img.shields.io/badge/Dil-TR%20%7C%20EN-blue?style=flat-square" alt="TR | EN">
     <img src="https://img.shields.io/badge/Platform-Taray%C4%B1c%C4%B1%20%2F%20WebGL%202-0078D6?logo=webgl&style=flat-square" alt="WebGL 2">
     <img src="https://img.shields.io/badge/Altyap%C4%B1-Vanilla%20JavaScript-F7DF1E?logo=javascript&style=flat-square" alt="Vanilla JS">
