@@ -6,7 +6,8 @@
   <p>
     <strong>Language:</strong> <a href="README.md"><strong>EN</strong></a> | <a href="README.tr.md"><strong>TR</strong></a>
     &nbsp;•&nbsp;
-    <a href="https://optical.hfatih.com"><strong>✦ Live Simulation (optical.hfatih.com)</strong></a> ·
+    <a href="https://hfatih.github.io/optical-bench/"><strong>✦ Live Simulation (GitHub Pages)</strong></a> ·
+    <a href="https://optical.hfatih.com"><strong>optical.hfatih.com</strong></a> ·
     <a href="#overview">Overview</a> ·
     <a href="#telescope-suite">Telescope Suite</a> ·
     <a href="#physics-engine">Physics Engine</a> ·
@@ -16,7 +17,8 @@
   </p>
 
   <p>
-    <a href="https://optical.hfatih.com"><img src="https://img.shields.io/badge/Live%20Demo-optical.hfatih.com-e7a0b9?style=flat-square&logo=googlechrome&logoColor=white" alt="Live Demo"></a>
+    <a href="https://hfatih.github.io/optical-bench/"><img src="https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-e7a0b9?style=flat-square&logo=github&logoColor=white" alt="Live Demo GitHub Pages"></a>
+    <a href="https://optical.hfatih.com"><img src="https://img.shields.io/badge/Live%20Site-optical.hfatih.com-60a5fa?style=flat-square&logo=googlechrome&logoColor=white" alt="Live Site optical.hfatih.com"></a>
     <img src="https://img.shields.io/badge/Language-EN%20%7C%20TR-blue?style=flat-square" alt="EN | TR">
     <img src="https://img.shields.io/badge/Platform-Browser%20%2F%20WebGL%202-0078D6?logo=webgl&style=flat-square" alt="WebGL 2">
     <img src="https://img.shields.io/badge/Core-Vanilla%20JavaScript-F7DF1E?logo=javascript&style=flat-square" alt="Vanilla JS">
