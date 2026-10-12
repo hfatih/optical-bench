@@ -1,0 +1,914 @@
+:root {
+  /* Sky Backgrounds */
+  --starlit-bg-sky: #150a14;          /* Base night sky */
+  --starlit-bg-terminal: #150c13;     /* Inset terminal screen */
+  --starlit-bg-deep: #07040a;         /* Deep void / black hole core */
+
+  /* Glass Surfaces */
+  --starlit-card-bg: rgba(21, 10, 20, 0.82);
+  --starlit-card-border: rgba(240, 171, 197, 0.20);
+  --starlit-card-hover: rgba(240, 171, 197, 0.12);
+
+  /* Primary Accent & Star Palette */
+  --starlit-pink: #f0abc5;            /* Primary celestial pink */
+  --starlit-rose: #e7a0b9;            /* Secondary deeper rose */
+  --starlit-glow: #ffe1ea;            /* Bright starlight white-pink */
+  --starlit-shine: #ffd3e0;           /* Radiant highlight */
+
+  /* Typography */
+  --starlit-text-main: #f5f5f6;       /* Crisp silver/white */
+  --starlit-text-sub: #cdb9c3;        /* Secondary reading text */
+  --starlit-text-muted: #a48a97;      /* Dusty lavender / telemetry */
+
+  /* Borders & Dividers */
+  --starlit-line: #5a2a40;            /* Wine-plum borders & dividers */
+  --starlit-line-dim: rgba(240, 171, 197, 0.15);
+
+  /* Telemetry & Category Accents */
+  --starlit-gold: #e8b86d;            /* Commits / JavaScript / Sun */
+  --starlit-cyan: #8fb7ff;            /* Earth / TypeScript / Orbits */
+  --starlit-emerald: #7fd6a4;         /* Earth landmass / Releases */
+  --starlit-purple: #bca4dd;          /* CSS / Aurora drift */
+  --starlit-coral: #fb7185;           /* Warnings / Lasers */
+
+  /* Compatibility Aliases for App */
+  --ink: var(--starlit-text-main);
+  --mute: var(--starlit-text-muted);
+  --line: var(--starlit-card-border);
+  --panel: var(--starlit-card-bg);
+  --panel-solid: var(--starlit-bg-terminal);
+  --accent: var(--starlit-pink);
+  --accent-glow: rgba(240, 171, 197, 0.35);
+  --gold: var(--starlit-gold);
+  --spectrum: linear-gradient(90deg, #ff3b60, #ff8e3c, #ffd000, #3ee07f, #00d4ff, #7e57ff, #e056fd);
+  --ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --serif: "Instrument Serif", Georgia, "Playfair Display", serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse 80% 60% at 50% 12%, rgba(183, 70, 108, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 50% at 85% 85%, rgba(100, 77, 142, 0.15) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 15% 75%, rgba(143, 183, 255, 0.08) 0%, transparent 60%),
+    var(--starlit-bg-sky);
+  overflow: hidden;
+  color: var(--ink);
+  font: 13px/1.4 var(--ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#overlay {
+  touch-action: none;
+  cursor: default;
+}
+
+/* Starlit Cosmic Glass Card */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--starlit-card-border);
+  border-radius: 18px;
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  backdrop-filter: blur(28px) saturate(1.4);
+  box-shadow: 0 16px 44px rgba(7, 4, 10, 0.72), inset 0 1px 0 rgba(255, 225, 234, 0.14);
+}
+
+.pill {
+  border-radius: 999px;
+}
+
+.hidden { display: none !important; }
+
+/* ---- Marka ve Başlık (Starlit Aesthetic) ---- */
+#brand {
+  position: fixed;
+  left: 24px;
+  top: 18px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  color: var(--starlit-pink);
+  filter: drop-shadow(0 0 10px rgba(240, 171, 197, 0.6));
+  animation: tw 3.5s ease-in-out infinite;
+}
+
+#brand h1 {
+  margin: 0;
+  font: 700 20px/1 var(--ui);
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #ffffff, #ffe1ea 60%, #f0abc5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(240, 171, 197, 0.12);
+  color: var(--starlit-glow);
+  border: 1px solid rgba(240, 171, 197, 0.28);
+  text-transform: uppercase;
+}
+
+.brand-tagline {
+  margin: 6px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--starlit-pink);
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.spectrum-bar {
+  display: block;
+  width: 90px;
+  height: 2.5px;
+  margin-top: 7px;
+  border-radius: 2px;
+  background: var(--spectrum);
+  opacity: 0.9;
+  box-shadow: 0 0 10px rgba(240, 171, 197, 0.35);
+}
+
+/* ---- Hazır Deneyler Navigasyonu ---- */
+#scenes {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3px;
+  padding: 4px;
+  z-index: 10;
+  max-width: calc(100vw - 440px);
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--panel);
+  border: 1px solid var(--starlit-card-border);
+  box-shadow: 0 12px 36px rgba(7, 4, 10, 0.65);
+}
+#scenes::-webkit-scrollbar { display: none; }
+
+#scenes button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--starlit-text-sub);
+  font: 500 12px var(--ui);
+  padding: 6px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .18s, background .18s, transform .1s, box-shadow .18s;
+}
+
+#scenes button:hover {
+  color: #fff;
+  background: var(--starlit-card-hover);
+}
+
+#scenes button.on {
+  color: var(--starlit-bg-sky);
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--starlit-shine) 0%, var(--starlit-rose) 100%);
+  box-shadow: 0 0 16px rgba(240, 171, 197, 0.45);
+}
+
+/* ---- Sağ Üst Hızlı Kontroller ---- */
+#topright {
+  position: fixed;
+  right: 20px;
+  top: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--starlit-text-sub);
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 0;
+  transition: color .18s, background .18s, border-color .18s, transform .1s, box-shadow .18s;
+}
+
+.icon-btn:hover {
+  color: #fff;
+  background: var(--starlit-card-hover);
+  border-color: rgba(240, 171, 197, 0.35);
+}
+
+.icon-btn.on {
+  color: var(--starlit-glow);
+  background: rgba(240, 171, 197, 0.18);
+  border-color: rgba(240, 171, 197, 0.45);
+  box-shadow: 0 0 12px rgba(240, 171, 197, 0.25);
+}
+
+/* ---- Paneller (Müfettiş & Ayarlar) ---- */
+.panel {
+  position: fixed;
+  right: 20px;
+  width: 300px;
+  padding: 16px 16px 14px;
+  background: var(--starlit-card-bg);
+  border: 1px solid var(--starlit-card-border);
+  box-shadow: 0 20px 48px rgba(7, 4, 10, 0.78), inset 0 1px 0 rgba(255, 225, 234, 0.14);
+}
+
+#settings {
+  top: 66px;
+  z-index: 8;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+#inspector {
+  top: 66px;
+  z-index: 7;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+#settings:not(.hidden) ~ #inspector { display: none; }
+
+.panel h3 {
+  margin: 0 0 14px;
+  font: 600 13.5px var(--ui);
+  letter-spacing: 0.02em;
+  color: var(--starlit-text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel h3 .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--starlit-pink);
+  box-shadow: 0 0 10px var(--starlit-pink);
+}
+
+.row { margin: 0 0 13px; }
+
+.row > label, .row > .lbl {
+  display: flex;
+  justify-content: space-between;
+  color: var(--starlit-text-sub);
+  font-size: 11.5px;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.row > label output, .row > .lbl output {
+  color: var(--starlit-glow);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* Kaydırıcı (Range Input) */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+  margin: 0;
+  cursor: pointer;
+  --p: 50%;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 3.5px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--starlit-pink) var(--p), rgba(240, 171, 197, 0.18) var(--p));
+}
+
+input[type=range]::-moz-range-track {
+  height: 3.5px;
+  border-radius: 3px;
+  background: rgba(240, 171, 197, 0.18);
+}
+
+input[type=range]::-moz-range-progress {
+  height: 3.5px;
+  border-radius: 3px;
+  background: var(--starlit-pink);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--starlit-shine);
+  border: 0;
+  box-shadow: 0 0 0 4px rgba(240, 171, 197, 0.22), 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: transform .1s, box-shadow .15s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 5px rgba(240, 171, 197, 0.35), 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+input[type=range].hue::-webkit-slider-runnable-track {
+  background: linear-gradient(90deg, #ff2a2a, #ff8a00, #f2e600, #3ee07f, #00d4ff, #5b6bff, #9b3dff);
+  height: 6px;
+  border-radius: 6px;
+}
+
+input[type=range].hue::-webkit-slider-thumb {
+  margin-top: -5px;
+}
+
+/* Segment Butonları */
+.seg {
+  display: flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--starlit-bg-terminal);
+  border: 1px solid var(--starlit-line-dim);
+  border-radius: 11px;
+}
+
+.seg button {
+  flex: 1;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--starlit-text-sub);
+  font: 500 11.5px var(--ui);
+  padding: 6px 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+
+.seg button:hover { color: #fff; }
+
+.seg button.on {
+  background: rgba(240, 171, 197, 0.22);
+  color: var(--starlit-glow);
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(240, 171, 197, 0.42);
+}
+
+/* Butonlar */
+.btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.btn {
+  flex: 1;
+  appearance: none;
+  border: 1px solid var(--starlit-card-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--starlit-text-main);
+  font: 500 12px var(--ui);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, transform .1s;
+}
+
+.btn:hover {
+  background: var(--starlit-card-hover);
+  border-color: rgba(240, 171, 197, 0.35);
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn.danger {
+  color: var(--starlit-coral);
+  border-color: rgba(251, 113, 133, 0.3);
+}
+
+.btn.danger:hover {
+  background: rgba(251, 113, 133, 0.16);
+  border-color: rgba(251, 113, 133, 0.5);
+}
+
+/* Toggle Anahtarı */
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--starlit-text-sub);
+  font-size: 11.5px;
+  margin-bottom: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle:hover { color: #fff; }
+
+.toggle i {
+  width: 34px;
+  height: 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
+  transition: background .2s;
+}
+
+.toggle i::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform .2s;
+}
+
+.toggle.on i { background: var(--starlit-rose); box-shadow: 0 0 10px rgba(231, 160, 185, 0.5); }
+.toggle.on i::after { transform: translateX(14px); background: var(--starlit-bg-sky); }
+
+.note {
+  color: var(--starlit-text-muted);
+  font-size: 11px;
+  margin: -4px 0 12px;
+  line-height: 1.45;
+}
+
+/* ---- Kamera Gezinme ve Yakınlaştırma (Pan & Zoom) Kontrolleri ---- */
+#viewControls {
+  position: fixed;
+  left: 24px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 8px;
+  z-index: 12;
+  background: var(--panel);
+  border: 1px solid var(--starlit-card-border);
+  box-shadow: 0 12px 32px rgba(7, 4, 10, 0.65);
+}
+
+#viewControls button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--starlit-text-sub);
+  font: 600 12px var(--ui);
+  padding: 5px 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+#viewControls button:hover {
+  color: #fff;
+  background: var(--starlit-card-hover);
+}
+
+#zoomVal {
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--starlit-glow);
+  padding: 0 5px;
+  user-select: none;
+}
+
+/* ---- Alt Araç Paleti Kapsayıcısı ---- */
+#dock-wrapper {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+  max-width: 95vw;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#dock-tabs {
+  display: flex;
+  gap: 3px;
+  padding: 3px 6px;
+  background: var(--panel);
+  border: 1px solid var(--starlit-card-border);
+  box-shadow: 0 8px 24px rgba(7, 4, 10, 0.5);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.dtab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--starlit-text-sub);
+  font: 500 11px var(--ui);
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .15s, background .15s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.dtab:hover {
+  color: #fff;
+  background: var(--starlit-card-hover);
+}
+
+.dtab.on {
+  color: var(--starlit-bg-sky);
+  background: linear-gradient(90deg, var(--starlit-shine) 0%, var(--starlit-rose) 100%);
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(240, 171, 197, 0.35);
+}
+
+.icon-toggle {
+  appearance: none;
+  border: 0;
+  background: rgba(240, 171, 197, 0.12);
+  color: var(--starlit-text-sub);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  margin-left: 2px;
+  transition: transform .2s, background .15s, color .15s;
+}
+
+.icon-toggle:hover {
+  color: #fff;
+  background: rgba(240, 171, 197, 0.24);
+}
+
+.icon-toggle.folded {
+  transform: rotate(180deg);
+}
+
+#dock {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  padding: 7px 12px;
+  background: var(--panel);
+  border: 1px solid var(--starlit-card-border);
+  box-shadow: 0 16px 44px rgba(7, 4, 10, 0.72);
+  transition: transform .25s ease, opacity .25s ease, max-height .25s ease;
+  overflow-x: auto;
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  max-width: 95vw;
+}
+#dock::-webkit-scrollbar { display: none; }
+
+#dock.minimized {
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#dock .grp {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+#dock .cap {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--starlit-text-muted);
+  padding-left: 4px;
+  font-weight: 600;
+}
+
+#dock .tools {
+  display: flex;
+  gap: 3px;
+}
+
+.tool {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--starlit-text-sub);
+  cursor: pointer;
+  touch-action: none;
+  width: 58px;
+  padding: 7px 0 5px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font: 500 10.5px var(--ui);
+  transition: background .15s, color .15s, transform .15s, border-color .15s, box-shadow .15s;
+}
+
+.tool svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tool:hover {
+  background: var(--starlit-card-hover);
+  color: #fff;
+  transform: translateY(-2px);
+  border-color: rgba(240, 171, 197, 0.35);
+  box-shadow: 0 4px 14px rgba(7, 4, 10, 0.4);
+}
+
+.tool:active { transform: translateY(0) scale(0.96); }
+
+/* ---- İpuçları Çubuğu ---- */
+#hint {
+  position: fixed;
+  left: 24px;
+  bottom: 74px;
+  color: var(--starlit-text-muted);
+  font-size: 11px;
+  line-height: 1.6;
+  max-width: 280px;
+  pointer-events: none;
+  transition: opacity .8s;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.95);
+  z-index: 5;
+}
+
+#hint b { color: var(--starlit-glow); font-weight: 600; }
+#hint.gone { opacity: 0; }
+
+#fallback[hidden] { display: none; }
+#fallback {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--starlit-bg-sky);
+  z-index: 50;
+  text-align: center;
+  padding: 30px;
+  color: var(--starlit-text-sub);
+}
+
+/* ---- Teleskop Canlı Telemetrisi & Bilgi Kartı (Starlit Observatory HUD) ---- */
+#telescopeHud {
+  position: fixed;
+  left: 24px;
+  top: 96px;
+  width: 325px;
+  padding: 14px 16px;
+  z-index: 11;
+  background: var(--starlit-card-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--starlit-card-border);
+  box-shadow: 0 20px 48px rgba(7, 4, 10, 0.75), 0 0 24px rgba(240, 171, 197, 0.14);
+  border-radius: 16px;
+  transition: opacity .2s, transform .2s;
+  pointer-events: auto;
+}
+
+#telescopeHud.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  display: none;
+}
+
+.hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--starlit-line-dim);
+}
+
+.hud-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 600 13px var(--ui);
+  color: var(--starlit-text-main);
+  letter-spacing: -0.01em;
+}
+
+.hud-title svg {
+  color: var(--starlit-pink);
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.hud-badge {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 2.5px 7px;
+  border-radius: 5px;
+  background: rgba(232, 184, 109, 0.16);
+  color: var(--starlit-gold);
+  border: 1px solid rgba(232, 184, 109, 0.35);
+  text-transform: uppercase;
+}
+
+.hud-close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--starlit-text-muted);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+}
+
+.hud-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hud-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.hud-stat {
+  background: var(--starlit-bg-terminal);
+  border: 1px solid var(--starlit-line-dim);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hud-lbl {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--starlit-text-muted);
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.hud-val {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--starlit-text-main);
+}
+
+.hud-val.highlight {
+  color: var(--starlit-gold);
+  text-shadow: 0 0 10px rgba(232, 184, 109, 0.45);
+}
+
+.hud-sub {
+  font-size: 9.5px;
+  color: var(--starlit-pink);
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
+.hud-footer {
+  background: var(--starlit-bg-deep);
+  border-radius: 10px;
+  padding: 9px 11px;
+  border: 1px solid var(--starlit-line-dim);
+}
+
+.hud-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.hud-tag {
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(240, 171, 197, 0.14);
+  color: var(--starlit-glow);
+  border: 1px solid rgba(240, 171, 197, 0.25);
+}
+
+.hud-desc {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--starlit-text-sub);
+  margin: 0;
+}
+
+/* Starlit Sparkle Twinkle Animation */
+@keyframes tw {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.04); filter: drop-shadow(0 0 8px #ffe1ea); }
+}
+
+/* Duyarlı Tasarım (Responsive) */
+@media (max-width: 1200px) {
+  #scenes {
+    top: 64px;
+    max-width: 90vw;
+  }
+  #hint { display: none; }
+}
+
+@media (max-width: 780px) {
+  #dock-wrapper {
+    left: 8px;
+    right: 8px;
+    transform: none;
+    bottom: 8px;
+  }
+  #dock {
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+  .tool { width: 44px; padding: 6px 0; }
+  .tool span { display: none; }
+  .panel {
+    left: 8px;
+    right: 8px;
+    width: auto;
+    top: auto;
+    bottom: 90px;
+    max-height: 40vh;
+  }
+  #telescopeHud {
+    left: 8px;
+    right: 8px;
+    width: auto;
+    top: auto;
+    bottom: 96px;
+    max-height: 45vh;
+    overflow-y: auto;
+  }
+  #viewControls {
+    bottom: auto;
+    top: 110px;
+    left: 12px;
+  }
+}

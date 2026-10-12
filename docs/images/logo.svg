@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2a1226"/>
+      <stop offset="70%" stop-color="#150a14"/>
+      <stop offset="100%" stop-color="#0d050c"/>
+    </radialGradient>
+    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#f0abc5"/>
+      <stop offset="100%" stop-color="#b8587d"/>
+    </linearGradient>
+    <filter id="bloom" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="128" height="128" rx="28" fill="url(#bgGlow)"/>
+  <rect width="126" height="126" x="1" y="1" rx="27" stroke="#f0abc5" stroke-opacity="0.2" stroke-width="1.5"/>
+
+  <!-- Subtle Circular Aperture -->
+  <circle cx="64" cy="64" r="48" stroke="#f0abc5" stroke-opacity="0.12" stroke-dasharray="3 3"/>
+
+  <!-- Optical Prism Geometry -->
+  <polygon points="64,30 98,88 30,88" fill="#f0abc5" fill-opacity="0.06" stroke="#f0abc5" stroke-opacity="0.45" stroke-width="2"/>
+
+  <!-- Incident White Ray -->
+  <line x1="16" y1="72" x2="48" y2="60" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" filter="url(#bloom)"/>
+
+  <!-- Dispersed Spectral Rays exiting Prism -->
+  <line x1="80" y1="58" x2="114" y2="44" stroke="#ff4d4d" stroke-width="1.8" stroke-linecap="round" filter="url(#bloom)"/>
+  <line x1="81" y1="61" x2="115" y2="52" stroke="#ffa64d" stroke-width="1.8" stroke-linecap="round" filter="url(#bloom)"/>
+  <line x1="82" y1="64" x2="116" y2="60" stroke="#ffee55" stroke-width="1.8" stroke-linecap="round" filter="url(#bloom)"/>
+  <line x1="83" y1="67" x2="116" y2="68" stroke="#44ee88" stroke-width="1.8" stroke-linecap="round" filter="url(#bloom)"/>
+  <line x1="84" y1="70" x2="115" y2="76" stroke="#44bbff" stroke-width="1.8" stroke-linecap="round" filter="url(#bloom)"/>
+  <line x1="85" y1="73" x2="113" y2="84" stroke="#bb66ff" stroke-width="1.8" stroke-linecap="round" filter="url(#bloom)"/>
+
+  <!-- Signature 4-point Sparkle Star (✦) -->
+  <path d="M64 16 L67 36 L87 39 L67 42 L64 62 L61 42 L41 39 L61 36 Z" fill="url(#roseGrad)" filter="url(#bloom)"/>
+  <circle cx="64" cy="39" r="1.5" fill="#ffffff"/>
+  
+  <!-- Mini Accent Sparkle -->
+  <path d="M100 24 L101.5 32 L109.5 33.5 L101.5 35 L100 43 L98.5 35 L90.5 33.5 L98.5 32 Z" fill="#f0abc5" fill-opacity="0.75"/>
+</svg>
