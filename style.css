@@ -107,6 +107,15 @@ canvas {
   gap: 10px;
 }
 
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  filter: drop-shadow(0 0 10px rgba(240, 171, 197, 0.65));
+  animation: tw 4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
 .brand-icon {
   color: var(--starlit-pink);
   filter: drop-shadow(0 0 10px rgba(240, 171, 197, 0.6));
