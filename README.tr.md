@@ -12,8 +12,7 @@
     <a href="#teleskop-laboratuvarı">Teleskoplar</a> ·
     <a href="#optik-fizik-motoru">Fizik Motoru</a> ·
     <a href="#nasıl-çalışır">Nasıl Çalışır</a> ·
-    <a href="#kontroller">Kontroller</a> ·
-    <a href="#destek">Destek</a>
+    <a href="#kontroller">Kontroller</a>
   </p>
 
   <p>
@@ -27,23 +26,6 @@
     <img src="https://img.shields.io/badge/Testler-11%2F11%20Ge%C3%A7ti-success?style=flat-square" alt="Testler">
     <img src="https://img.shields.io/badge/Lisans-MIT-blue?style=flat-square" alt="Lisans MIT">
   </p>
-</div>
-
----
-
-## Destek
-
-Eğer **Işık Masası** eğitim, araştırma veya hobileriniz için faydalı olduysa projeyi destekleyebilirsiniz:
-
-<div align="center">
-  <a href="https://buymeacoffee.com/hfatih" target="_blank">
-    <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee">
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://github.com/sponsors/Hfatih" target="_blank">
-    <img src="https://img.shields.io/badge/Sponsor_on_GitHub-EA4AAA?style=for-the-badge&logo=github-sponsors&logoColor=white" alt="GitHub Sponsor">
-  </a>
-  <p><sub><em>Desteğiniz projenin bağımsız, ücretsiz ve sürekli güncel kalmasını sağlar.</em></sub></p>
 </div>
 
 ---
