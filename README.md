@@ -12,8 +12,7 @@
     <a href="#telescope-suite">Telescope Suite</a> ·
     <a href="#physics-engine">Physics Engine</a> ·
     <a href="#how-it-works">How It Works</a> ·
-    <a href="#controls">Controls</a> ·
-    <a href="#support">Support</a>
+    <a href="#controls">Controls</a>
   </p>
 
   <p>
@@ -27,23 +26,6 @@
     <img src="https://img.shields.io/badge/Tests-11%2F11%20Passing-success?style=flat-square" alt="Tests">
     <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License MIT">
   </p>
-</div>
-
----
-
-## Support
-
-If **Optical Bench** is useful to you for education, research, or exploration, you can support its ongoing development:
-
-<div align="center">
-  <a href="https://buymeacoffee.com/hfatih" target="_blank">
-    <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee">
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://github.com/sponsors/Hfatih" target="_blank">
-    <img src="https://img.shields.io/badge/Sponsor_on_GitHub-EA4AAA?style=for-the-badge&logo=github-sponsors&logoColor=white" alt="GitHub Sponsor">
-  </a>
-  <p><sub><em>Your support keeps the project independent, free, and continuously evolving.</em></sub></p>
 </div>
 
 ---
