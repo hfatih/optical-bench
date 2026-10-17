@@ -26,6 +26,12 @@
     <img src="https://img.shields.io/badge/Tests-11%2F11%20Passing-success?style=flat-square" alt="Tests">
     <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License MIT">
   </p>
+  <p align="center">
+    <img src="https://hits.sh/github.com/hfatih/optical-bench.svg?style=flat-square&label=views&color=e7a0b9" alt="Views">
+    <a href="https://github.com/hfatih/optical-bench/stargazers"><img src="https://img.shields.io/github/stars/hfatih/optical-bench?style=flat-square&label=stars&color=f0abc5" alt="Stars"></a>
+    <a href="https://github.com/hfatih/optical-bench/forks"><img src="https://img.shields.io/github/forks/hfatih/optical-bench?style=flat-square&label=forks&color=dba8c2" alt="Forks"></a>
+    <a href="https://github.com/hfatih/optical-bench/commits"><img src="https://img.shields.io/github/last-commit/hfatih/optical-bench?style=flat-square&label=last%20commit&color=bca4dd" alt="Last commit"></a>
+  </p>
 </div>
 
 ---
